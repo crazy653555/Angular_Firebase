@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
+import { CoreModule } from '@core/core.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    CoreModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
