@@ -26,7 +26,7 @@ import { SharedModule } from './shared/shared.module';
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     CoreModule,
-    SharedModule
+    SharedModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
