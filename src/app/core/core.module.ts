@@ -1,6 +1,7 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BaseHttpService } from './service/base-http.service';
+import { BaseHttpService } from './service/base-http.service/base-http.service';
+
 
 @NgModule({
   imports: [

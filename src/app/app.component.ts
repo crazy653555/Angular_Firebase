@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { BaseHttpService } from '@core/service/base-http.service';
+import { BaseHttpService } from '@core/service/base-http.service/base-http.service';
 
 @Component({
   selector: 'app-root',

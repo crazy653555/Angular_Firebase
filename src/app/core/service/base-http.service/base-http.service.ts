@@ -13,6 +13,15 @@ export class BaseHttpService {
 
   constructor(private _db: AngularFireDatabase) { }
 
+  listHandler(url:string){
+
+  }
+
+  objectHandler(url:string){
+    
+  }
+
+
   // get Object
   object<T>(url: string, config: BaseHttpConfig = { isKey: true }): Observable<T> | Observable<any> {
     const req = this._db.object(url);
