@@ -1,10 +1,10 @@
-import { Observable } from "rxjs/Observable";
-import { dbTimeObject } from "./db.time.function";
+import { Observable } from 'rxjs/Observable';
+import { dbTimeObject } from './db.time.function';
 import {
   AngularFireDatabase,
   AngularFireList,
   QueryFn
-} from "angularfire2/database";
+} from 'angularfire2/database';
 
 export interface RealTimeDbConfig {
   isKey: boolean;
@@ -20,18 +20,18 @@ export class ListHandler {
     this._fireList = this._db.list(_url);
   }
 
-  //get date
+  // get date
   get(config: RealTimeDbConfig = { isKey: true }) {
     const req = config.queryFn
       ? this._db.list(this.url, config.queryFn)
       : this._fireList;
     return config.isKey
       ? req.snapshotChanges().map(actions =>
-          actions.map(action => ({
-            key: action.key,
-            ...action.payload.val()
-          }))
-        )
+        actions.map(action => ({
+          key: action.key,
+          ...action.payload.val()
+        }))
+      )
       : req.valueChanges();
   }
 
@@ -40,25 +40,25 @@ export class ListHandler {
     return Observable.fromPromise(this._fireList.push(dbTimeObject(data)));
   }
 
-  //刪除
+  // 刪除
   delete(key: string): Observable<any> {
     return key
       ? Observable.fromPromise(this._fireList.remove(key))
-      : Observable.throw(new Error("no key"));
+      : Observable.throw(new Error('no key'));
   }
 
-  //修改
+  // 修改
   update<T>(key, data: T) {
-    return Observable.fromPromise(this._fireList.set(key,dbTimeObject(data,false)));
+    return Observable.fromPromise(this._fireList.set(key, dbTimeObject(data, false)));
   }
 
-  //設定
-  set<T>(key,data:T){
-    return Observable.fromPromise(this._fireList.set(key,dbTimeObject(data,false)));
+  // 設定
+  set<T>(key, data: T) {
+    return Observable.fromPromise(this._fireList.set(key, dbTimeObject(data, false)));
   }
 
-  //抹除
-  drop(){
+  // 抹除
+  drop() {
     return Observable.fromPromise(this._fireList.remove());
   }
 }

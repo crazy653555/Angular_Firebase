@@ -15,11 +15,12 @@ export class AppComponent {
   item3: Observable<any[]>;
 
   constructor(private _http: BaseHttpService) {
-    this.item1 = this._http.list('numbers', {
+    this.item1 = this._http.listHandler('numbers').get( {
       queryFn: (ref) => ref.orderByChild('value').endAt(3).limitToLast(2),
       isKey: true
     });
-    this.item2 = this._http.object('numbers');
+
+    this.item2 = this._http.objectHandler('numbers').get();
   }
 
 }
